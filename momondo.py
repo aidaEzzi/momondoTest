@@ -5,13 +5,12 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 
-
 MOMONDO_SITE = "https://www.momondo.se/"
 
 @pytest.fixture
 def load_driver():
-    driver = webdriver.Remote(command_executor=MOMONDO_SITE,
-                          desired_capabilities=options.to_capabilities())
+    driver = webdriver.Chrome()
+    driver.get(MOMONDO_SITE)
     driver.implicitly_wait(5)
     driver.delete_all_cookies
     yield driver
