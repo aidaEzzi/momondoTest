@@ -10,7 +10,7 @@ MOMONDO_SITE = "https://www.momondo.se/"
 
 @pytest.fixture
 def load_driver():
-    driver = webdriver.Chrome()
+    driver = webdriver.ChromeOptions()
     driver.get(MOMONDO_SITE)
     driver.implicitly_wait(5)
     driver.delete_all_cookies
