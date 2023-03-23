@@ -4,11 +4,14 @@ import pytest
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
+import chromedriver_autoinstaller
+
 
 MOMONDO_SITE = "https://www.momondo.se/"
 
 @pytest.fixture
 def load_driver():
+    chromedriver_autoinstaller.install()
     driver = webdriver.Chrome()
     driver.get(MOMONDO_SITE)
     driver.implicitly_wait(5)
