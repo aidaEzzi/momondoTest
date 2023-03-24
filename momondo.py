@@ -12,9 +12,8 @@ def load_driver():
     driver = webdriver.Chrome()
     driver.get(MOMONDO_SITE)
     driver.implicitly_wait(5)
-    driver.delete_all_cookies
     yield driver
-    driver.quit()
+    
 
 
 
@@ -49,6 +48,12 @@ def test_flight_class_selection(load_driver):
     flight_class_selection.select_by_visible_text("Business")
     search_flight_button = driver.find_element(By.XPATH, '/html/body/div[2]/div[1]/div[5]/div[1]/div[1]/div/div[1]/div/section[2]/div/div/div/div/div/div[1]/div[3]/button')
     action.move_to_element(search_flight_button).click()
+
+def test_teardown(load_driver):
+    driver = load_driver
+    driver.delete_all_cookies
+    driver.quit()
+
 
    
     
